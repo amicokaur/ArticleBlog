@@ -4,6 +4,8 @@ var request = require("request");
 var cheerio = require("cheerio");
 var mongoose = require("mongoose");
 var axios = require("axios");
+var bodyParser = require("body-parser");
+
 
 // Initialize Express
 var app = express();
@@ -17,6 +19,9 @@ var db = require("./models");
 var exphbs = require("express-handlebars")
 app.engine("handlebars",exphbs({defaultLayout:"main"}));
 app.set("view engine", "handlebars");
+app.use(express.static("public"));
+app.use(bodyParser.urlencoded({extended:false}));
+app.use(bodyParser.json());
 
 // Connect to the Mongo DB
 mongoose.connect("mongodb://localhost/week18Populater", { useNewUrlParser: true });

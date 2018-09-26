@@ -1,5 +1,6 @@
 var db = require("./../models");
 module.exports = function(app) {
+   
     app.get("/", function(req, res) {
         // Grab every document in the Articles collection
         db.Article.find({})
