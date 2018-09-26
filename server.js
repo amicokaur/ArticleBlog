@@ -5,6 +5,8 @@ var cheerio = require("cheerio");
 var mongoose = require("mongoose");
 var axios = require("axios");
 var bodyParser = require("body-parser");
+mongoose.Promise = Promise;
+mongoose.connect(MONGODB_URI);
 
 
 // Initialize Express
@@ -24,7 +26,7 @@ app.use(bodyParser.urlencoded({extended:false}));
 app.use(bodyParser.json());
 
 // Connect to the Mongo DB
-mongoose.connect("mongodb://localhost/week18Populater", { useNewUrlParser: true });
+var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/mongoHeadlines";
 
 
 // Hook mongojs configuration to the db variable
